@@ -1,6 +1,7 @@
-# Ignorar tudo por padrão e permitir apenas src/, docs/, .agents/ e .gitignore
+# Ignorar tudo por padrão e permitir apenas src/, docs/, .agents/, README.md e .gitignore
 /*
 !/src/
 !/docs/
 !/.agents/
+!/README.md
 !/.gitignore
