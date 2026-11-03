@@ -1,0 +1,6 @@
+# Ignorar tudo por padrão e permitir apenas src/, docs/, .agents/ e .gitignore
+/*
+!/src/
+!/docs/
+!/.agents/
+!/.gitignore
