@@ -17,6 +17,7 @@ local ServerLibrary = {}
 ServerLibrary.Saving = require(script:WaitForChild("Saving"))
 ServerLibrary.StageServer = require(script:WaitForChild("StageServer"))
 ServerLibrary.PickaxeServer = require(script:WaitForChild("PickaxeServer"))
+ServerLibrary.PlotServer = require(script:WaitForChild("PlotServer"))
 
 function ServerLibrary.Start(frameworkLibrary: any)
 	if ServerLibrary.Saving and ServerLibrary.Saving.Start then
@@ -29,6 +30,10 @@ function ServerLibrary.Start(frameworkLibrary: any)
 
 	if ServerLibrary.PickaxeServer and ServerLibrary.PickaxeServer.Start then
 		ServerLibrary.PickaxeServer.Start(frameworkLibrary)
+	end
+
+	if ServerLibrary.PlotServer and ServerLibrary.PlotServer.Start then
+		ServerLibrary.PlotServer.Start(frameworkLibrary)
 	end
 
 	print("[ServerLibrary] Todos os serviços de servidor Velvet foram iniciados!")

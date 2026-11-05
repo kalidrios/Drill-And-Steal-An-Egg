@@ -31,13 +31,19 @@ graph TD
 
 ### Etapa 1: Treino Duplo no Plot Privado (Velocidade na Esteira + Força na Rocha)
 No seu próprio Plot pessoal (100% seguro de outros jogadores e bosses), o jogador prepara seus atributos:
-1. **Esteira (Treadmill - ref_StealAnEgg)**:
+1. **Atribuição Exclusiva de Plot (`PlotServer.luau` & `PlotClient.local.luau`)**:
+   - Cada jogador recebe automaticamente um dos Plots de 1 a 6 ao entrar no servidor.
+   - Plots ocupados não podem ser tomados por outros jogadores.
+   - A placa do plot (`PlayerPlotSign`) atualiza com a foto do avatar (`rbxthumb`) e nome do jogador.
+   - O ícone da casa flutuante (`YourBase`) fica visível e rastreável à distância apenas para o dono do plot.
+   - Ao nascer ou renascer, o jogador surge diretamente no `Spawn` do seu respectivo Plot.
+2. **Esteira (Treadmill - ref_StealAnEgg)**:
    - O jogador sobe na esteira para farmar **Speed (Velocidade de Corrida)**.
    - Quanto maior a velocidade base, mais rápido o jogador consegue cruzar a área dos ninhos e escapar do Boss com o peso do ovo nas costas.
-2. **Rocha de Treino Privada (Training Rock - ref_MinePerClick)**:
+3. **Rocha de Treino Privada (Training Rock - ref_MinePerClick)**:
    - O jogador bate na sua rocha para farmar **Strength (Força)**.
    - A Força aumenta a velocidade de cavar para baixo e o dano das picaretas/ferramentas contra ovos mais resistentes.
-3. **Cálculo Offline**:
+4. **Cálculo Offline**:
    - Ambas as estações de treino contam com progressão offline defensiva (respeitando o teto de 12 horas).
 
 ### Etapa 2: Cava para Baixo & Entrada na Área das Profundezas
