@@ -44,14 +44,17 @@ local function isPointInsidePart(point: Vector3, part: BasePart, paddingStuds: n
 		and math.abs(localPos.Z) <= halfSize.Z
 end
 
+-- Retorna a pasta Cave (Workspace.Map.Cave)
 local function getCaveFolder(): Instance?
 	local map = Workspace:FindFirstChild("Map")
 	if map and map:FindFirstChild("Cave") then
 		return map.Cave
 	end
-	return Workspace:FindFirstChild("Cave") or Workspace:FindFirstChild("Stages")
+	return Workspace:FindFirstChild("Cave")
 end
 
+-- Detecta se o jogador está dentro do Hitbox de alguma das cavernas (Cave1 a Cave5)
+-- Caminho: Workspace.Map.Cave["Cave" .. id].Hitbox
 local function detectPlayerStageFromHitboxes(): number?
 	local character = localPlayer.Character
 	local hrp = character and character:FindFirstChild("HumanoidRootPart") :: BasePart?
@@ -62,13 +65,15 @@ local function detectPlayerStageFromHitboxes(): number?
 
 	local playerPos = hrp.Position
 
-	for _, stageFolder in ipairs(caveFolder:GetChildren()) do
-		local stageNum = tonumber(stageFolder.Name:match("%d+"))
-		if stageNum then
-			local hitbox = stageFolder:FindFirstChild("Hitbox") :: BasePart?
+	-- Itera exatamente pelas cavernas ativas (Cave1 a Cave5)
+	for caveIndex = 1, 5 do
+		local caveName = "Cave" .. caveIndex
+		local caveModel = caveFolder:FindFirstChild(caveName)
+		if caveModel then
+			local hitbox = caveModel:FindFirstChild("Hitbox") :: BasePart?
 			if hitbox and hitbox:IsA("BasePart") then
-				if isPointInsidePart(playerPos, hitbox, 2.5) then
-					return stageNum
+				if isPointInsidePart(playerPos, hitbox, 3.0) then
+					return caveIndex
 				end
 			end
 		end

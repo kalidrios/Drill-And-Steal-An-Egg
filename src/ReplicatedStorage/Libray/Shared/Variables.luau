@@ -32,3 +32,4 @@ Variables.WallHitCooldown = 0.25
 Variables.MaxHitDistanceStuds = 35.0
 
 return Variables
+
