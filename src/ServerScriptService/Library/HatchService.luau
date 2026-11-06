@@ -4,20 +4,15 @@
     Serviço central de chocar ovos (Hatching) no servidor.
     Calcula:
     1. Sorteio do Animal baseado na tabela drops do ovo
-    2. Sorteio de Variante (Normal, Gold, Diamond)
+    2. Sorteio de Variante (89% Normal, 10% Gold, 1% Diamond) usando Variables.luau
     3. Sorteio de Peso (Kg) e cálculo final de moedas/segundo
-    
-    Valores e chances extraídos 1:1 de ref_BreakAndStealAnEgg (EggRewards.luau).
 ]]
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Variables = require(ReplicatedStorage:WaitForChild("Libray"):WaitForChild("Shared"):WaitForChild("Variables"))
 local PetWeightCalculator = require(ReplicatedStorage:WaitForChild("Framework"):WaitForChild("PetWeightCalculator"))
 
 local HatchService = {}
-
--- Chances base do ref_BreakAndStealAnEgg (EggRewards.luau linhas 58-60)
-HatchService.CHANCE_GOLD = 0.01      -- 1.0% (1 em 100)
-HatchService.CHANCE_DIAMOND = 0.0025 -- 0.25% (1 em 400)
 
 export type HatchResult = {
     petName: string,
@@ -31,19 +26,20 @@ export type HatchResult = {
 }
 
 --[[
-    Determina a variante do pet sorteado com base na probabilidade de hatch.
+    Determina a variante do pet sorteado com base no Variables.luau:
+    89% Normal, 10% Gold, 1% Diamond.
 ]]
 function HatchService.RollVariant(luckMultiplier: number?): "Normal" | "Gold" | "Diamond"
     local luck = luckMultiplier or 1.0
-    local roll = math.random() -- número decimal entre 0.0 e 1.0
+    local roll = math.random() * 100.0 -- número de 0.0 a 100.0
     
-    -- Chance ajustada por poções de sorte ou sorte da área
-    local diamondThreshold = HatchService.CHANCE_DIAMOND * luck
-    local goldThreshold = (HatchService.CHANCE_DIAMOND + HatchService.CHANCE_GOLD) * luck
+    -- Ajusta chances de Gold e Diamond com o multiplicador de sorte
+    local diamondChance = Variables.DiamondChance * luck
+    local goldChance = Variables.GoldChance * luck
     
-    if roll <= diamondThreshold then
+    if roll <= diamondChance then
         return "Diamond"
-    elseif roll <= goldThreshold then
+    elseif roll <= (diamondChance + goldChance) then
         return "Gold"
     else
         return "Normal"
@@ -56,7 +52,6 @@ end
 function HatchService.RollPetFromDrops(drops: { { any } }): string?
     if not drops or #drops == 0 then return nil end
     
-    -- Calcula peso total
     local totalWeight = 0
     for _, entry in ipairs(drops) do
         totalWeight += (entry[2] or 0)
@@ -97,7 +92,11 @@ function HatchService.HatchEgg(eggConfig: any, luckMultiplier: number?): HatchRe
     
     local variant = HatchService.RollVariant(luckMultiplier)
     local actualKg = PetWeightCalculator.RollWeight(baseKg, luckMultiplier)
-    local finalCoinsPerSec = PetWeightCalculator.GetCoinsPerSecond(baseCoins, actualKg, baseKg, variant)
+    
+    -- Multiplicador da variante vindo de Variables
+    local variantMult = Variables.VariantMultipliers[variant] or 1.0
+    local weightMult = PetWeightCalculator.CalculateCashMultiplier(actualKg, baseKg)
+    local finalCoinsPerSec = math.max(math.floor((baseCoins * weightMult * variantMult) + 0.5), 1)
     
     -- Thumbnail correta para a UI
     local thumb = petConfig.NormalThumbnail or ""
