@@ -1,0 +1,19 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Bytecode (Base64):
+-- CQMPB3JlcXVpcmUGc2NyaXB0BlBhcmVudAtCdWlsZENvbmZpZwZSYXJpdHkFUHJpY2UJUHJvZHVjdElkBEljb24ccmJ4YXNzZXRpZDovLzEwNjExMjQ3NzEyMjg2Mw9TcGVlZE11bHRpcGxpZXINRGlzcGxheUluU2hvcAtEaXNwbGF5TmFtZQxHb2xkZW4gVHJhaWwIUmFyaXRpZXMJTGVnZW5kYXJ5AAEFAAABAgAjowAAAKQAAQAAAABApAEDAAAAIEBNAQEkBAAAAE0BASQEAAAATQEB4QUAAACfAAICpAEBAAAAAECkAgMAAAAgQE0CAiQEAAAATQICJAQAAABNAgIkBAAAAE0CAvIGAAAAnwECAlICAADiAxMATQQB6BQAAABNBAS5FQAAADAEA/IGAAAAnwICAIICAAAWAwEEAAAAQAMCBAAAIEADAwMEAwUDBgIAAAAAOJx8QQMHAgAAgN2X6OpBAwgDCQMKAgAAAAAAAAxAAwsBAQMMAw0IBwcIAAAACQoAAAALDAAAAAb/////DQ4AAAAPEAAAABESAAAAAw4DDwABAAEYAAMAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIABAAAAAAA/AABAAAAAADr3iR+b6ipnOuI3Uvla5Atm8YzCtkaTn8=
+
+-- decompilation:
+local BuildConfig = require(script.Parent.Parent.BuildConfig)
+local Rarity = require(script.Parent.Parent.Parent.Rarity)
+
+return BuildConfig({
+	Price = 30000000.0,
+	ProductId = 3611606764.0,
+	Icon = "rbxassetid://106112477122863",
+	SpeedMultiplier = 3.5,
+	DisplayInShop = true,
+	DisplayName = "Golden Trail",
+	Rarity = Rarity.Rarities.Legendary
+})
+

@@ -1,0 +1,13 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Bytecode (Base64):
+-- CQMMBGdhbWURUmVwbGljYXRlZFN0b3JhZ2UKR2V0U2VydmljZQdyZXF1aXJlB0xpYnJhcnkHTW9kdWxlcwhQYWNrYWdlcwZTaWduYWwGQ2xpZW50GFRyZWFkbWlsbFZpZGVvQ29udHJvbGxlcgVUeXBlcwlJbnRlcmZhY2UAAQQAAAECACGjAAAApAABAAAAAEBvAgIAvAAAFgMAAACfAAMCpAEFAAAAQEBNAgBqBgAAAE0CAugHAAAATQIC5ggAAABNAgIfCQAAAJ8BAgKkAgUAAABAQE0DAGoGAAAATQMDTQoAAABNAwOpCwAAAE0DA+8MAAAATQMDDw0AAACfAgICxgMAAIIDAgAOAwEEAAAAQAMCAwMDBAQAAEBAAwUDBgMHAwgDCQMKAwsDDAABAAEYAAMAAAAAAAMAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAHAAAQAAAAAAfyeWWJjf/hu02tLaGZ7cow8/gSxN4/xZ
+
+-- decompilation:
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+require(ReplicatedStorage.Library.Modules.Packages.Signal)
+require(ReplicatedStorage.Library.Client.TreadmillVideoController.Types.Interface)
+
+return nil
+

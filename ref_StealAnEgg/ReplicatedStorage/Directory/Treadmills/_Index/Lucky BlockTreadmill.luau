@@ -1,0 +1,19 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Bytecode (Base64):
+-- CQMPB3JlcXVpcmUGc2NyaXB0BlBhcmVudAtCdWlsZENvbmZpZwZSYXJpdHkFUHJpY2UJUHJvZHVjdElkBEljb24ccmJ4YXNzZXRpZDovLzEzNDI1NTExNTQ3MTU4Mg9TcGVlZE11bHRpcGxpZXINRGlzcGxheUluU2hvcAtEaXNwbGF5TmFtZRVMdWNreSBCbG9jayBUcmVhZG1pbGwIUmFyaXRpZXMGQ29zbWljAAEFAAABAgAjowAAAKQAAQAAAABApAEDAAAAIEBNAQEkBAAAAE0BASQEAAAATQEB4QUAAACfAAICpAEBAAAAAECkAgMAAAAgQE0CAiQEAAAATQICJAQAAABNAgIkBAAAAE0CAvIGAAAAnwECAlICAADiAxMATQQB6BQAAABNBAQFFQAAADAEA/IGAAAAnwICAIICAAAWAwEEAAAAQAMCBAAAIEADAwMEAwUDBgIAAAAuWXYxQgMHAgAAQNaX6OpBAwgDCQMKAgAAAAAAAGlAAwsBAQMMAw0IBwcIAAAACQoAAAALDAAAAAb/////DQ4AAAAPEAAAABESAAAAAw4DDwABAAEYAAMAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAIABAAAAAAA/AABAAAAAAAFjjcSn4C0dKQ+eByWVB6VdZYgZjdKXRM=
+
+-- decompilation:
+local BuildConfig = require(script.Parent.Parent.BuildConfig)
+local Rarity = require(script.Parent.Parent.Parent.Rarity)
+
+return BuildConfig({
+	Price = 75000000000.0,
+	ProductId = 3611606706.0,
+	Icon = "rbxassetid://134255115471582",
+	SpeedMultiplier = 600.0, -- 🟡 MODDED x3 (user: "5. x3")
+	DisplayInShop = true,
+	DisplayName = "Lucky Block Treadmill",
+	Rarity = Rarity.Rarities.Cosmic
+})
+

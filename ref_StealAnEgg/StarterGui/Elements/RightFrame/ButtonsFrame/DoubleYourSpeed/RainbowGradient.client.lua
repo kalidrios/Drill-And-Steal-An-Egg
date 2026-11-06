@@ -1,0 +1,25 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Bytecode (Base64):
+-- CQMPBkNvbG9yMwdmcm9tSFNWDUNvbG9yU2VxdWVuY2UDbmV3FUNvbG9yU2VxdWVuY2VLZXlwb2ludAVDb2xvcgRnYW1lClJ1blNlcnZpY2UKR2V0U2VydmljZQZzY3JpcHQGUGFyZW50ClVJR3JhZGllbnQMV2FpdEZvckNoaWxkDVJlbmRlclN0ZXBwZWQHQ29ubmVjdAACDAECAAAAKvsBAABbAgAAQwEBAt4BAAD7AgAAIQECAfsEAACVAwQCIQIDAaQDBQAAEDCAUgQBAG8FBgCMBgEAnwMEAqQEBQAAEDCAUgUCAG8GBgCMBwEAnwQEAvsFAQCkBgkAACBwgP8HAAACAAAApAgLAAAgoICMCQAAUgoDAJ8IAwKkCQsAACCggIwKAQBSCwQAnwkDAMUHCAABAAAAnwYCAjAGBaQMAAAAggABAA0CmpmZmZmZuT8CAAAAAAAA8D8CmpmZmZmZqT8DAQMCBAAQMIACmpmZmZmZ6T8DAwMEBAAgcIADBQQAIKCAAwYABQABGAAAAAACAAEAAAEAAAAAAAEAAAAAAAIAAAAAAQAAAAABAAAAAAAA/gAABAYAAAAABgAAAQIAGqMAAACkAAEAAAAAQG8CAgC8AAAWAwAAAJ8AAwKkAQUAAABAQE0BASQGAAAAbwMHALwBAdMIAAAAnwEDAowCAABNAwDPCQAAANkFAAASAQL/EgABALwDA8cKAAAAnwMDAcECAACCAAEACwMHBAAAAEADCAMJAwoEAABAQAMLAwwDDQMOAw8BAAEAARgAAAAAAAAAAQAAAAAAAAABAgAAAAAAAAANAAEAAAAAAeRa/n5LNbzTY92NJQ5NIe2UQukK1p6Ufw==
+
+-- decompilation:
+local RunService = game:GetService("RunService")
+local UIGradient = script.Parent:WaitForChild("UIGradient")
+local n1 = 0.0
+
+RunService.RenderStepped:Connect(function(dt) -- line: 5
+	-- upvalues: n1 (ref), UIGradient (copy)
+	n1 += dt * 0.1
+
+	local v5 = n1 % 1.0
+	local v6 = (n1 + 0.05) % 1.0
+	local color3 = Color3.fromHSV(v5, 0.8, 1.0)
+	local color3_2 = Color3.fromHSV(v6, 0.8, 1.0)
+
+	UIGradient.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(0.0, color3),
+		ColorSequenceKeypoint.new(1.0, color3_2)
+	})
+end)
+

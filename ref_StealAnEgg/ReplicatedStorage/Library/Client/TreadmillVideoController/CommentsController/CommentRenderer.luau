@@ -1,0 +1,179 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Bytecode (Base64):
+-- CQN8Am9zBHRpbWUEbWF0aANtYXgIanVzdCBub3cHJSptIGFnbwVmbG9vcgZmb3JtYXQHJSpoIGFnbwclKmQgYWdvDmZvcm1hdFBvc3RlZEF0BFRleHQERW51bQ1BdXRvbWF0aWNTaXplAVgMVGV4dFRydW5jYXRlBUF0RW5kCFRleHRTaXplBEZvbnQHVmVjdG9yMgNuZXcMQWJzb2x1dGVTaXplAVkLR2V0VGV4dFNpemUEY2VpbANtaW4FVURpbTIEU2l6ZQVTY2FsZQZPZmZzZXQOZml0RGlzcGxheU5hbWUJZnJvbVNjYWxlB0NvbnRlbnQHQ29tbWVudAtUZXh0V3JhcHBlZBZjb25maWd1cmVEeW5hbWljTGF5b3V0BFVzZXILRGlzcGxheU5hbWUIT3duZXJUYWcHVmlzaWJsZQ1Pd25lckdyYWRpZW50B0VuYWJsZWQLT3duZXJTdHJva2UKVGV4dENvbG9yMxpjb25maWd1cmVPd25lclByZXNlbnRhdGlvbgVwY2FsbAZQYXJlbnQIT1dORVJfSUQCJSoHQXRUcmFjZTJGYWlsZWQgdG8gcmVzb2x2ZSBjb21tZW50IGRpc3BsYXkgbmFtZSBmb3IgdXNlciAlKgNMb2cNVGh1bWJuYWlsVHlwZQhIZWFkU2hvdA1UaHVtYm5haWxTaXplC1NpemUxNTB4MTUwBkF2YXRhcgVJbWFnZSxGYWlsZWQgdG8gcmVzb2x2ZSBjb21tZW50IGF2YXRhciBmb3IgdXNlciAlKgpMb2FkaW5nLi4uBHRhc2sFc3Bhd24UbG9hZFVzZXJQcmVzZW50YXRpb24GRmFtaWx5CkZvbnRXZWlnaHQEQm9sZAVTdHlsZQhGb250RmFjZQVMYWJlbA1Gb3JtYXRDb21wYWN0Ai4jCnVwZGF0ZUxpa2UCSWQHRGVzdHJveQVDbG9uZQpDb21tZW50XyUqBE5hbWULTGF5b3V0T3JkZXIHQWN0aW9ucwRMZWZ0CFBvc3RlZEF0BVJpZ2h0BExpa2UESWNvbgdNZXNzYWdlCUNyZWF0ZWRBdAZVc2VySWQMSW1hZ2VBc3NldElkBVBob3RvCUNvbnRhaW5lcg9yYnhhc3NldGlkOi8vJSoJU2NhbGVUeXBlBENyb3ANTGlrZWRCeVZpZXdlcglMaWtlQ291bnQDQWRk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
+
+-- decompilation:
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TextService = game:GetService("TextService")
+local ButtonFX = require(ReplicatedStorage.Library.Client.GUIFX.ButtonFX)
+local Constants = require(ReplicatedStorage.Library.Globals.Constants)
+local Simple = require(ReplicatedStorage.Library.Modules.FormatNumber.Simple)
+local GetDisplayNameFromUserIdAsync = require(ReplicatedStorage.Library.Functions.GetDisplayNameFromUserIdAsync)
+local GetThumbnailFromUserIdAsync = require(ReplicatedStorage.Library.Functions.GetThumbnailFromUserIdAsync)
+local Log = require(ReplicatedStorage.Library.Modules.Packages.Log)
+local Trove = require(ReplicatedStorage.Library.Modules.Packages.Trove)
+
+require(script.Parent.Types.Interface)
+require(ReplicatedStorage.Library.Client.VideoCommentsCmds.Types.Interface)
+
+local color3 = Color3.fromRGB(232.0, 68.0, 86.0)
+local color3_2 = Color3.fromRGB(255.0, 255.0, 255.0)
+local v12 = Log.new()
+local t1 = {}
+
+local function formatPostedAt(n1: number) -- line: 38
+	local v20 = math.max(0.0, os.time() - n1)
+
+	if v20 < 60.0 then
+		return "just now"
+	end
+
+	if v20 < 3600.0 then
+		return `{ math.floor(v20 / 60.0) }m ago`
+	end
+
+	if v20 < 86400.0 then
+		return `{ math.floor(v20 / 3600.0) }h ago`
+	end
+
+	return `{ math.floor(v20 / 86400.0) }d ago`
+end
+local function fitDisplayName(p1, s1: string) -- line: 55
+	-- upvalues: TextService (copy)
+	p1.Text = s1
+	p1.AutomaticSize = Enum.AutomaticSize.X
+	p1.TextTruncate = Enum.TextTruncate.AtEnd
+
+	local v23 = math.min(math.ceil(TextService:GetTextSize(s1, p1.TextSize, p1.Font, Vector2.new(1e999, p1.AbsoluteSize.Y)).X) + 2.0, 140.0)
+
+	p1.Size = UDim2.new(0.0, v23, p1.Size.Y.Scale, p1.Size.Y.Offset)
+end
+local function configureDynamicLayout(p2) -- line: 70
+	p2.AutomaticSize = Enum.AutomaticSize.Y
+	p2.Size = UDim2.fromScale(1.0, 0.0)
+	p2.Content.AutomaticSize = Enum.AutomaticSize.Y
+	p2.Content.Size = UDim2.new(p2.Content.Size.X.Scale, p2.Content.Size.X.Offset, 0.0, 0.0)
+	p2.Content.Comment.AutomaticSize = Enum.AutomaticSize.Y
+	p2.Content.Comment.Size = UDim2.fromScale(1.0, 0.0)
+	p2.Content.Comment.TextWrapped = true
+end
+local function configureOwnerPresentation(p3, b1: boolean, color3_3: Color3) -- line: 80
+	-- upvalues: color3_2 (copy)
+	local DisplayName = p3.Content.User.DisplayName
+
+	p3.Content.User.OwnerTag.Visible = b1
+	DisplayName.OwnerGradient.Enabled = b1
+	DisplayName.OwnerStroke.Enabled = b1
+	DisplayName.TextColor3 = if not b1 then color3_3 else color3_2
+end
+local function loadUserPresentation(p4, n2: number) -- line: 92
+	-- upvalues: fitDisplayName (copy), GetDisplayNameFromUserIdAsync (copy), Constants (copy), v12 (copy), GetThumbnailFromUserIdAsync (copy)
+	fitDisplayName(p4.Content.User.DisplayName, "Loading...")
+	task.spawn(function() -- line: 94
+		-- upvalues: GetDisplayNameFromUserIdAsync (copy), n2 (copy), p4 (copy), Constants (copy), fitDisplayName (copy), v12 (copy)
+		local ok, result = pcall(GetDisplayNameFromUserIdAsync, n2)
+
+		if p4.Parent == nil then
+			return
+		end
+
+		if ok then
+			local v52 = if n2 ~= Constants.OWNER_ID then result else `{ result }`
+
+			fitDisplayName(p4.Content.User.DisplayName, v52)
+
+			return
+		end
+
+		v12:AtTrace():Log(`Failed to resolve comment display name for user { n2 }`)
+	end)
+	task.spawn(function() -- line: 108
+		-- upvalues: GetThumbnailFromUserIdAsync (copy), n2 (copy), p4 (copy), v12 (copy)
+		local ok, result = pcall(GetThumbnailFromUserIdAsync, n2, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size150x150)
+
+		if p4.Parent == nil then
+			return
+		end
+
+		if ok and result ~= nil then
+			p4.Avatar.Image = result
+
+			return
+		end
+
+		v12:AtTrace():Log(`Failed to resolve comment avatar for user { n2 }`)
+	end)
+end
+
+function t1.Create(p5, p6, p7, n3: number, p8: ((...any) -> ...any)) -- line: 127
+	-- upvalues: Trove (copy), formatPostedAt (copy), configureDynamicLayout (copy), Constants (copy), color3_2 (copy), color3 (copy), Simple (copy), loadUserPresentation (copy), ButtonFX (copy)
+	local clone = p5:Clone()
+
+	clone.Name = `Comment_{ p7.Id }`
+	clone.LayoutOrder = n3
+	clone.Visible = true
+	clone.Parent = p6
+
+	local Content = clone.Content
+	local PostedAt = Content.Actions.Left.PostedAt
+	local Like = Content.Actions.Right.Like
+	local Icon = Like.Icon
+	local IconTextColor3 = Icon.TextColor3
+	local IconFontFace = Icon.FontFace
+	local DisplayNameTextColor3 = Content.User.DisplayName.TextColor3
+	local v44 = Trove.new()
+
+	PostedAt.LayoutOrder = Content.User.DisplayName.LayoutOrder + 1.0
+	Content.Comment.Text = p7.Message
+	PostedAt.Text = formatPostedAt(p7.CreatedAt)
+	configureDynamicLayout(clone)
+
+	local v45 = p7.UserId == Constants.OWNER_ID
+	local DisplayName = clone.Content.User.DisplayName
+
+	clone.Content.User.OwnerTag.Visible = v45
+	DisplayName.OwnerGradient.Enabled = v45
+	DisplayName.OwnerStroke.Enabled = v45
+	DisplayName.TextColor3 = if not v45 then DisplayNameTextColor3 else color3_2
+
+	if p7.ImageAssetId ~= nil then
+		Content.Photo.Visible = true
+		Content.Photo.Container.Image.Image = `rbxassetid://{ p7.ImageAssetId }`
+		Content.Photo.Container.Image.ScaleType = Enum.ScaleType.Crop
+	else
+		Content.Photo.Visible = false
+	end
+
+	local function updateLike(b2: boolean, n4: number) -- line: 163
+		-- upvalues: Icon (copy), color3 (copy), IconTextColor3 (copy), IconFontFace (copy), Like (copy), Simple (copy)
+		Icon.TextColor3 = if not b2 then IconTextColor3 else color3
+		Icon.FontFace = if not b2 then IconFontFace else Font.new(IconFontFace.Family, Enum.FontWeight.Bold, IconFontFace.Style)
+		Like.Label.Text = Simple.FormatCompact(math.max(0.0, n4), ".#")
+	end
+
+	local LikedByViewer = p7.LikedByViewer
+	local LikeCount = p7.LikeCount
+
+	Icon.TextColor3 = if not LikedByViewer then IconTextColor3 else color3
+	Icon.FontFace = if not LikedByViewer then IconFontFace else Font.new(IconFontFace.Family, Enum.FontWeight.Bold, IconFontFace.Style)
+	Like.Label.Text = Simple.FormatCompact(math.max(0.0, LikeCount), ".#")
+	loadUserPresentation(clone, p7.UserId)
+	v44:Add(ButtonFX(Like, nil, function() -- line: 173
+		-- upvalues: p8 (copy), p7 (copy)
+		p8(p7.Id)
+	end))
+	v44:Add(clone)
+
+	return {
+		Row = clone,
+		UpdateLike = updateLike,
+		Destroy = function() -- line: 181
+			-- upvalues: v44 (copy)
+			v44:Destroy()
+		end
+	}
+end
+
+return t1
+

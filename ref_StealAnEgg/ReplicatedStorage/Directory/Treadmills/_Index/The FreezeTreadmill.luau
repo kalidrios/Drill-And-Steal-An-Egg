@@ -1,0 +1,19 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Bytecode (Base64):
+-- CQMPB3JlcXVpcmUGc2NyaXB0BlBhcmVudAtCdWlsZENvbmZpZwZSYXJpdHkFUHJpY2UJUHJvZHVjdElkBEljb24ccmJ4YXNzZXRpZDovLzEzNjU4OTI5OTc3Mjk2NQ9TcGVlZE11bHRpcGxpZXINRGlzcGxheUluU2hvcAtEaXNwbGF5TmFtZRRUaGUgRnJlZXplIFRyZWFkbWlsbAhSYXJpdGllcwZNeXRoaWMAAQUAAAECACOjAAAApAABAAAAAECkAQMAAAAgQE0BASQEAAAATQEBJAQAAABNAQHhBQAAAJ8AAgKkAQEAAAAAQKQCAwAAACBATQICJAQAAABNAgIkBAAAAE0CAiQEAAAATQIC8gYAAACfAQICUgIAAOIDEwBNBAHoFAAAAE0EBKQVAAAAMAQD8gYAAACfAgIAggIAABYDAQQAAABAAwIEAAAgQAMDAwQDBQMGAgAAAMALWuZBAwcCAACg1Zfo6kEDCAMJAwoCAAAAAAAAWUADCwEBAwwDDQgHBwgAAAAJCgAAAAsMAAAABv////8NDgAAAA8QAAAAERIAAAADDgMPAAEAARgAAwAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAgAEAAAAAAD8AAEAAAAAAMcZ1LxE+cYmajddnOmRjKa3AcPI9d2+vQ==
+
+-- decompilation:
+local BuildConfig = require(script.Parent.Parent.BuildConfig)
+local Rarity = require(script.Parent.Parent.Parent.Rarity)
+
+return BuildConfig({
+	Price = 3000000000.0,
+	ProductId = 3611606701.0,
+	Icon = "rbxassetid://136589299772965",
+	SpeedMultiplier = 300.0, -- 🟡 MODDED x3 (user: "5. x3")
+	DisplayInShop = true,
+	DisplayName = "The Freeze Treadmill",
+	Rarity = Rarity.Rarities.Mythic
+})
+
