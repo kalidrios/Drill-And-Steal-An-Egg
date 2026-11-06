@@ -91,14 +91,14 @@ function PlotClientCmds.GetPlotData(player: Player?)
 	local plotModel = folder:FindFirstChild(tostring(targetSlot))
 	if not plotModel then return nil end
 	
-	local centerPoint = plotModel:FindFirstChild("CenterPoint")
+	local Center = plotModel:FindFirstChild("Center")
 	local plotSign = plotModel:FindFirstChild("PlotSign")
 	local spawnPart = plotModel:FindFirstChild("Spawn") or plotModel:FindFirstChild("SpawnPoint")
 	
 	return {
 		Slot = targetSlot,
 		PlotFolder = plotModel,
-		CenterPoint = centerPoint,
+		Center = Center,
 		PlotSign = plotSign,
 		SpawnPart = spawnPart,
 	}
@@ -165,3 +165,4 @@ function PlotClientCmds.Init(frameworkLibrary: any)
 end
 
 return PlotClientCmds
+

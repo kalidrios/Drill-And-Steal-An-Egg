@@ -52,12 +52,23 @@ function StageClientCmds.FormatNumber(value: number): string
 	return string.format("%.2f%s", scaled, suffix)
 end
 
--- Busca a peça da parede no Workspace.Stages["Stage X"].Stages["Y"]
-function StageClientCmds.GetWallPart(stageId: number, wallId: number): BasePart?
-	local stagesFolder = Workspace:FindFirstChild("Stages")
-	if not stagesFolder then return nil end
+-- Busca a pasta de cavernas/stages (Workspace.Map.Cave com fallbacks)
+local function getCaveFolder(): Instance?
+	local map = Workspace:FindFirstChild("Map")
+	if map and map:FindFirstChild("Cave") then
+		return map.Cave
+	end
+	return Workspace:FindFirstChild("Cave") or Workspace:FindFirstChild("Stages")
+end
 
-	local stageFolder = stagesFolder:FindFirstChild(string.format("Stage %d", stageId))
+-- Busca a peça da parede no Workspace.Map.Cave["CaveX"].Stages["Y"]
+function StageClientCmds.GetWallPart(stageId: number, wallId: number): BasePart?
+	local caveFolder = getCaveFolder()
+	if not caveFolder then return nil end
+
+	local stageFolder = caveFolder:FindFirstChild(string.format("Cave%d", stageId))
+		or caveFolder:FindFirstChild(string.format("Stage %d", stageId))
+		or caveFolder:FindFirstChild(tostring(stageId))
 	if not stageFolder then return nil end
 
 	local stagesModel = stageFolder:FindFirstChild("Stages")

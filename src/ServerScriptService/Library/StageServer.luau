@@ -72,9 +72,16 @@ function StageServer.HitWall(player: Player, stageId: number, wallId: number)
 	if (now - lastHit) < HIT_COOLDOWN_SECONDS then return end
 	lastHitTimestamps[player] = now
 
-	-- 3. Validação de distância física até a parede no Workspace
-	local stagesFolder = Workspace:FindFirstChild("Stages")
-	local stageFolder = stagesFolder and stagesFolder:FindFirstChild(string.format("Stage %d", stageId))
+	-- 3. Validação de distância física até a parede no Workspace (Workspace.Map.Cave)
+	local caveFolder = (Workspace:FindFirstChild("Map") and Workspace.Map:FindFirstChild("Cave"))
+		or Workspace:FindFirstChild("Cave")
+		or Workspace:FindFirstChild("Stages")
+
+	local stageFolder = caveFolder and (
+		caveFolder:FindFirstChild(string.format("Cave%d", stageId))
+		or caveFolder:FindFirstChild(string.format("Stage %d", stageId))
+		or caveFolder:FindFirstChild(tostring(stageId))
+	)
 	local wallsContainer = stageFolder and stageFolder:FindFirstChild("Stages")
 	local wallPart = wallsContainer and wallsContainer:FindFirstChild(tostring(wallId)) :: BasePart?
 

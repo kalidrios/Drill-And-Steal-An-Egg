@@ -220,8 +220,9 @@ function Load()
 		coroutine.wrap(function()
 			pcall(function()
 				local savedInstances = {}
-				local stagesFolder = game.Workspace:FindFirstChild("Stages")
-				if stagesFolder then table.insert(savedInstances, stagesFolder) end
+				local caveFolder = (game.Workspace:FindFirstChild("Map") and game.Workspace.Map:FindFirstChild("Cave"))
+					or game.Workspace:FindFirstChild("Stages")
+				if caveFolder then table.insert(savedInstances, caveFolder) end
 				local thingsFolder = game.Workspace:FindFirstChild("Things") or game.Workspace:FindFirstChild("__THINGS")
 				if thingsFolder then table.insert(savedInstances, thingsFolder) end
 				if #savedInstances > 0 then

@@ -44,17 +44,25 @@ local function isPointInsidePart(point: Vector3, part: BasePart, paddingStuds: n
 		and math.abs(localPos.Z) <= halfSize.Z
 end
 
+local function getCaveFolder(): Instance?
+	local map = Workspace:FindFirstChild("Map")
+	if map and map:FindFirstChild("Cave") then
+		return map.Cave
+	end
+	return Workspace:FindFirstChild("Cave") or Workspace:FindFirstChild("Stages")
+end
+
 local function detectPlayerStageFromHitboxes(): number?
 	local character = localPlayer.Character
 	local hrp = character and character:FindFirstChild("HumanoidRootPart") :: BasePart?
 	if not hrp then return nil end
 
-	local stagesFolder = Workspace:FindFirstChild("Stages")
-	if not stagesFolder then return nil end
+	local caveFolder = getCaveFolder()
+	if not caveFolder then return nil end
 
 	local playerPos = hrp.Position
 
-	for _, stageFolder in ipairs(stagesFolder:GetChildren()) do
+	for _, stageFolder in ipairs(caveFolder:GetChildren()) do
 		local stageNum = tonumber(stageFolder.Name:match("%d+"))
 		if stageNum then
 			local hitbox = stageFolder:FindFirstChild("Hitbox") :: BasePart?
@@ -70,8 +78,9 @@ local function detectPlayerStageFromHitboxes(): number?
 end
 
 task.spawn(function()
-	local stagesFolder = Workspace:WaitForChild("Stages", 10)
-	if not stagesFolder then return end
+	local map = Workspace:WaitForChild("Map", 10)
+	local caveFolder = (map and map:WaitForChild("Cave", 10)) or Workspace:WaitForChild("Stages", 5)
+	if not caveFolder then return end
 
 	local stageCmds = getStageCmds()
 	if stageCmds and stageCmds.InitAllStageVisuals then

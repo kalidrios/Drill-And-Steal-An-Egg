@@ -115,7 +115,7 @@ local function onHeartbeat()
 	local attachment = plotSign and plotSign:FindFirstChild("Attachment")
 	local yourBase = attachment and attachment:FindFirstChild("YourBase")
 	local homeBtn = yourBase and yourBase:FindFirstChild("Home")
-	local center = plotData.CenterPoint or plotData.SpawnPart
+	local center = plotData.Center or plotData.SpawnPart
 	
 	if yourBase and homeBtn and homeBtn:IsA("ImageButton") and center and center:IsA("BasePart") then
 		yourBase.MaxDistance = MAX_DISTANCE
@@ -135,7 +135,7 @@ local function onHeartbeat()
 		for _, plot in ipairs(folder:GetChildren()) do
 			local pSign = plot:FindFirstChild("PlotSign")
 			local pPlotSign = pSign and pSign:FindFirstChild("PlayerPlotSign")
-			local pCenter = plot:FindFirstChild("CenterPoint")
+			local pCenter = plot:FindFirstChild("Center")
 			if pPlotSign and pPlotSign:IsA("BillboardGui") and pCenter and pCenter:IsA("BasePart") then
 				local pDist = (hrp.Position - pCenter.Position).Magnitude
 				pPlotSign.AlwaysOnTop = (pDist <= FADE_DISTANCE)
@@ -155,3 +155,4 @@ end)
 RunService.Heartbeat:Connect(onHeartbeat)
 
 print("[PlotClient] Controlador visual dos Plots e Base inicializado com sucesso!")
+
