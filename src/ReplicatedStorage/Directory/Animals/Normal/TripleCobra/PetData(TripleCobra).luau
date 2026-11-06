@@ -17,9 +17,5 @@ return {
 	baseWeightKg = 97.6,
 	baseCoinsPerSecond = 7000000.0,
 	rarity = "Secret", 
-	isPremium = false, 
-	tradeable = true, 
-	isVanity = false, 
-	strengthMin = 2, 
-	strengthMax = 3
-};
+	tradeable = true
+	};

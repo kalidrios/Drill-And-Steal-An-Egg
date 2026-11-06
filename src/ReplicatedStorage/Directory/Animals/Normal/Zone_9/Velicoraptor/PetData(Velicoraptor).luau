@@ -17,9 +17,5 @@ return {
 	baseWeightKg = 136.1,
 	baseCoinsPerSecond = 400000000.0,
 	rarity = "Inferno", 
-	isPremium = false, 
-	tradeable = true, 
-	isVanity = false, 
-	strengthMin = 2, 
-	strengthMax = 3
-};
+	tradeable = true
+	};

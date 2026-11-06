@@ -17,9 +17,5 @@ return {
 	baseWeightKg = 89.4,
 	baseCoinsPerSecond = 300000000.0,
 	rarity = "Celestial", 
-	isPremium = false, 
-	tradeable = true, 
-	isVanity = false, 
-	strengthMin = 2, 
-	strengthMax = 3
-};
+	tradeable = true
+	};

@@ -17,9 +17,5 @@ return {
 	baseWeightKg = 52.4,
 	baseCoinsPerSecond = 1350000.0,
 	rarity = "Cosmic", 
-	isPremium = false, 
-	tradeable = true, 
-	isVanity = false, 
-	strengthMin = 2, 
-	strengthMax = 3
-};
+	tradeable = true
+	};

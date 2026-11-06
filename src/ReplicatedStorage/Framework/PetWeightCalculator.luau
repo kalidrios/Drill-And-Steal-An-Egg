@@ -67,3 +67,4 @@ function PetWeightCalculator.GetCoinsPerSecond(baseCoinsPerSec: number, actualKg
 end
 
 return PetWeightCalculator
+
