@@ -31,6 +31,7 @@ local HIT_COOLDOWN_SECONDS: number = 0.25
 local MAX_HIT_DISTANCE_STUDS: number = 65
 
 local Library: any = nil
+local Network: any = nil
 
 function StageServer.InitPlayerStages(player: Player)
 	playerWallHealth[player] = {}
@@ -38,6 +39,21 @@ function StageServer.InitPlayerStages(player: Player)
 		playerWallHealth[player][stageId] = {}
 		for _, wallData in ipairs(stageConfig.Walls) do
 			playerWallHealth[player][stageId][wallData.WallId] = wallData.MaxHealth
+		end
+	end
+end
+
+function StageServer.ResetAllWalls(player: Player)
+	playerWallHealth[player] = {}
+	for stageId, stageConfig in ipairs(StagesList) do
+		playerWallHealth[player][stageId] = {}
+		for _, wallData in ipairs(stageConfig.Walls) do
+			playerWallHealth[player][stageId][wallData.WallId] = wallData.MaxHealth
+			local net = Network or (Library and Library.Network)
+			if net then
+				net.FireClient(player, "BreakWall", stageId, wallData.WallId, false, false)
+				net.FireClient(player, "UpdateWallHealth", stageId, wallData.WallId, wallData.MaxHealth, wallData.MaxHealth)
+			end
 		end
 	end
 end
@@ -77,8 +93,20 @@ function StageServer.HitWall(player: Player, stageId: number, wallId: number)
 		or Workspace:FindFirstChild("Cave")
 		or Workspace:FindFirstChild("Stages")
 
+	local CAVE_NAMES = {
+		[1] = "EarthCavern",
+		[2] = "StoneCave",
+		[3] = "RockCave",
+		[4] = "EmeraldCave",
+		[5] = "LavaCave",
+		[6] = "Cave of Blood Crystals",
+		[7] = "QuartzCave",
+		[8] = "VoidCave",
+	}
+	local caveAlias = CAVE_NAMES[stageId] or string.format("Cave%d", stageId)
 	local stageFolder = caveFolder and (
-		caveFolder:FindFirstChild(string.format("Cave%d", stageId))
+		caveFolder:FindFirstChild(caveAlias)
+		or caveFolder:FindFirstChild(string.format("Cave%d", stageId))
 		or caveFolder:FindFirstChild(string.format("Stage %d", stageId))
 		or caveFolder:FindFirstChild(tostring(stageId))
 	)
@@ -101,7 +129,7 @@ function StageServer.HitWall(player: Player, stageId: number, wallId: number)
 	
 	local equippedPickaxe = (playerData and playerData.EquippedPickaxe) or "Wood Pickaxe"
 	local pickaxeDamage = 1
-	local pickaxeDir = Library.Directory and Library.Directory.Pickaxes
+	local pickaxeDir = Library and Library.Directory and Library.Directory.Pickaxes
 	if pickaxeDir and pickaxeDir[equippedPickaxe] then
 		pickaxeDamage = pickaxeDir[equippedPickaxe].Damage or 1
 	end
@@ -125,12 +153,12 @@ function StageServer.HitWall(player: Player, stageId: number, wallId: number)
 	print(string.format("[StageServer.HitWall] Recebido golpe de %s no Stage %d, Parede %d (Dano: %d, HP atual: %s)", player.Name, stageId, wallId, damage, tostring(currentHP)))
 
 	-- 6. Notifica o cliente do jogador para atualizar a barra de vida local
-	Library.Network.FireClient(player, "UpdateWallHealth", stageId, wallId, currentHP, maxHealth)
+	local net = Network or (Library and Library.Network); if net then net.FireClient(player, "UpdateWallHealth", stageId, wallId, currentHP, maxHealth) end
 
 	-- 7. Se o HP zerar, dispara a quebra local apenas para esse jogador
 	if currentHP <= 0 then
 		print(string.format("[StageServer.HitWall] Parede %d do Stage %d DESTRUÍDA por %s!", wallId, stageId, player.Name))
-		Library.Network.FireClient(player, "BreakWall", stageId, wallId, true, true)
+		local net = Network or (Library and Library.Network); if net then net.FireClient(player, "BreakWall", stageId, wallId, true, true) end
 	end
 end
 
@@ -138,8 +166,8 @@ function StageServer.ResetPlayerStages(player: Player)
 	StageServer.InitPlayerStages(player)
 	for stageId, stageConfig in ipairs(StagesList) do
 		for _, wallData in ipairs(stageConfig.Walls) do
-			Library.Network.FireClient(player, "BreakWall", stageId, wallData.WallId, false, false)
-			Library.Network.FireClient(player, "UpdateWallHealth", stageId, wallData.WallId, wallData.MaxHealth, wallData.MaxHealth)
+			local net = Network or (Library and Library.Network); if net then net.FireClient(player, "BreakWall", stageId, wallData.WallId, false, false) end
+			local net = Network or (Library and Library.Network); if net then net.FireClient(player, "UpdateWallHealth", stageId, wallData.WallId, wallData.MaxHealth, wallData.MaxHealth) end
 		end
 	end
 end
@@ -155,6 +183,7 @@ end
 
 function StageServer.Start(lib: any)
 	Library = lib
+	Network = lib and lib.Network
 
 	Players.PlayerAdded:Connect(StageServer.OnPlayerAdded)
 	Players.PlayerRemoving:Connect(StageServer.OnPlayerRemoving)
@@ -183,9 +212,9 @@ function StageServer.Start(lib: any)
 					local hp = walls[wallData.WallId] or wallData.MaxHealth
 					local isBroken = (hp <= 0)
 					if isBroken then
-						Library.Network.FireClient(player, "BreakWall", stageId, wallData.WallId, true, false)
+						local net = Network or (Library and Library.Network); if net then net.FireClient(player, "BreakWall", stageId, wallData.WallId, true, false) end
 					end
-					Library.Network.FireClient(player, "UpdateWallHealth", stageId, wallData.WallId, hp, wallData.MaxHealth)
+					local net = Network or (Library and Library.Network); if net then net.FireClient(player, "UpdateWallHealth", stageId, wallData.WallId, hp, wallData.MaxHealth) end
 				end
 			end
 		end

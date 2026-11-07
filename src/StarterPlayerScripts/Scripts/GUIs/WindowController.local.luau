@@ -25,7 +25,7 @@ local right = mainFrame:WaitForChild("Right")
 --------------------------------------------------------------------------------
 task.spawn(function()
 	local exclusiveShopGui = PlayerGui:WaitForChild("ExclusiveShop") :: ScreenGui
-	local shopBtn = left:WaitForChild("ShopAndGuild"):WaitForChild("ExclusiveShop") :: GuiObject
+	local shopBtn = left:WaitForChild("ShopAndtrade"):WaitForChild("ExclusiveShop") :: GuiObject
 	ImportantWindow.BindButton(shopBtn, exclusiveShopGui, "Pop")
 end)
 

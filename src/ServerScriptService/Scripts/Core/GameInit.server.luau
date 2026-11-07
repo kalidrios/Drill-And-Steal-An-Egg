@@ -25,6 +25,8 @@ local remotesToRegister = {
 	"PlayEggHatch",
 	"Start Shutdown",
 	"Send Position",
+	"Eggs_TestDeposit",
+	"Plots_RequestTeleport",
 }
 
 for _, remoteName in ipairs(remotesToRegister) do

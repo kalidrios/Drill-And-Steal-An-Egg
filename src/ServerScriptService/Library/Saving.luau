@@ -104,11 +104,19 @@ function Saving.SyncPlayerStats(player: Player, forceFullSync: boolean?)
 	end
 
 	for key, val in pairs(data) do
-		if not DefaultStats.NetworkingBlacklist[key] and type(val) ~= "table" then
-			if lastSnap[key] ~= val or forceFullSync then
-				lastSnap[key] = val
-				changedFields[key] = val
-				hasChanges = true
+		if not DefaultStats.NetworkingBlacklist[key] then
+			if type(val) ~= "table" then
+				if lastSnap[key] ~= val or forceFullSync then
+					lastSnap[key] = val
+					changedFields[key] = val
+					hasChanges = true
+				end
+			else
+				-- Clona tabelas como InventoryPets, EggInventory e EquippedPets para sincronizar
+				if forceFullSync or key == "InventoryPets" or key == "EggInventory" or key == "EquippedPets" then
+					changedFields[key] = deepClone(val)
+					hasChanges = true
+				end
 			end
 		end
 	end

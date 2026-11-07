@@ -22,6 +22,29 @@ local isMining: boolean = false
 local currentStageId: number? = nil
 local currentWallId: number? = nil
 
+-- Ordem exata de todas as cavernas do topo para a profundidade
+local CAVE_ORDER = {
+	[1] = "EarthCavern",
+	[2] = "StoneCave",
+	[3] = "RockCave",
+	[4] = "EmeraldCave",
+	[5] = "LavaCave",
+	[6] = "Cave of Blood Crystals",
+	[7] = "QuartzCave",
+	[8] = "VoidCave",
+}
+
+local CAVE_INDEX_MAP = {
+	["EarthCavern"] = 1,
+	["StoneCave"] = 2,
+	["RockCave"] = 3,
+	["EmeraldCave"] = 4,
+	["LavaCave"] = 5,
+	["Cave of Blood Crystals"] = 6,
+	["QuartzCave"] = 7,
+	["VoidCave"] = 8,
+}
+
 local function getStageCmds(): any
 	if Library.StageClientCmds then
 		return Library.StageClientCmds
@@ -53,8 +76,7 @@ local function getCaveFolder(): Instance?
 	return Workspace:FindFirstChild("Cave")
 end
 
--- Detecta se o jogador está dentro do Hitbox de alguma das cavernas (Cave1 a Cave5)
--- Caminho: Workspace.Map.Cave["Cave" .. id].Hitbox
+-- Detecta se o jogador está dentro do Hitbox de qualquer uma das cavernas
 local function detectPlayerStageFromHitboxes(): number?
 	local character = localPlayer.Character
 	local hrp = character and character:FindFirstChild("HumanoidRootPart") :: BasePart?
@@ -65,15 +87,14 @@ local function detectPlayerStageFromHitboxes(): number?
 
 	local playerPos = hrp.Position
 
-	-- Itera exatamente pelas cavernas ativas (Cave1 a Cave5)
-	for caveIndex = 1, 5 do
-		local caveName = "Cave" .. caveIndex
+	for stageIndex, caveName in ipairs(CAVE_ORDER) do
 		local caveModel = caveFolder:FindFirstChild(caveName)
+			or caveFolder:FindFirstChild("Cave" .. stageIndex)
 		if caveModel then
 			local hitbox = caveModel:FindFirstChild("Hitbox") :: BasePart?
 			if hitbox and hitbox:IsA("BasePart") then
 				if isPointInsidePart(playerPos, hitbox, 3.0) then
-					return caveIndex
+					return stageIndex
 				end
 			end
 		end
@@ -175,8 +196,9 @@ local function ResolveStageAndWall(instance: Instance?): (number?, number?)
 
 	local cur: Instance? = instance
 	while cur and cur ~= Workspace do
-		if cur.Parent and cur.Parent.Name == "Stages" and cur.Parent.Parent and cur.Parent.Parent.Name:find("Stage") then
-			local stageNum = tonumber(cur.Parent.Parent.Name:match("%d+"))
+		if cur.Parent and cur.Parent.Name == "Stages" and cur.Parent.Parent then
+			local pName = cur.Parent.Parent.Name
+			local stageNum = CAVE_INDEX_MAP[pName] or tonumber(pName:match("%d+"))
 			local wallNum = tonumber(cur.Name)
 			if stageNum and wallNum then
 				return stageNum, wallNum
@@ -245,4 +267,3 @@ task.spawn(function()
 end)
 
 print("[Drill and Steal an Egg] StageClient inicializado!")
-

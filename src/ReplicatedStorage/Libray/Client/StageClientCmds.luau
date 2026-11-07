@@ -66,7 +66,19 @@ function StageClientCmds.GetWallPart(stageId: number, wallId: number): BasePart?
 	local caveFolder = getCaveFolder()
 	if not caveFolder then return nil end
 
-	local stageFolder = caveFolder:FindFirstChild(string.format("Cave%d", stageId))
+	local CAVE_NAMES = {
+		[1] = "EarthCavern",
+		[2] = "StoneCave",
+		[3] = "RockCave",
+		[4] = "EmeraldCave",
+		[5] = "LavaCave",
+		[6] = "Cave of Blood Crystals",
+		[7] = "QuartzCave",
+		[8] = "VoidCave",
+	}
+	local caveAlias = CAVE_NAMES[stageId] or string.format("Cave%d", stageId)
+	local stageFolder = caveFolder:FindFirstChild(caveAlias)
+		or caveFolder:FindFirstChild(string.format("Cave%d", stageId))
 		or caveFolder:FindFirstChild(string.format("Stage %d", stageId))
 		or caveFolder:FindFirstChild(tostring(stageId))
 	if not stageFolder then return nil end

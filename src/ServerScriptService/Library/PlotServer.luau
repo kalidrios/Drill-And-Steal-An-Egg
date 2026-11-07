@@ -157,6 +157,7 @@ local function teleportToSpawn(player: Player, plotId: number)
 end
 
 function PlotServer.GetPlotId(player: Player): number?
+	if not plotOf[player] then PlotServer.AssignPlot(player) end
 	return plotOf[player]
 end
 
@@ -199,6 +200,13 @@ function PlotServer.AssignPlot(player: Player)
 	task.defer(function()
 		teleportToSpawn(player, freeId)
 	end)
+end
+
+function PlotServer.TeleportToSpawn(player: Player, plotId: number?)
+	local targetPlotId = plotId or plotOf[player]
+	if targetPlotId then
+		teleportToSpawn(player, targetPlotId)
+	end
 end
 
 function PlotServer.FreePlot(player: Player)

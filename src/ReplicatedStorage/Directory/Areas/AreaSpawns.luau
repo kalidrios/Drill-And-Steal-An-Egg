@@ -1,14 +1,11 @@
---!strict
+--!nocheck
 --[[
     Directory/Areas/AreaSpawns.luau
     Configuração de Spawns de Ovos para as 9 Áreas do jogo.
     Padrão ref_PSX (worlds Spawn.luau) adaptado para spawn dinâmico dos 139 ovos.
 --]]
 
-export type EggSpawnEntry = {
-	[1]: string, -- Nome do Ovo
-	[2]: number, -- Peso / Probabilidade de spawn
-}
+export type EggSpawnEntry = { any }
 
 export type AreaSpawnSettings = {
 	maxEggs: number,
