@@ -70,3 +70,4 @@ if player.Character then
 end
 
 print("[CarryAnimationController] Inicializado com sucesso! (ID: 131342831254185)")
+

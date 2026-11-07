@@ -311,10 +311,26 @@ local function setupSafeZones()
     for _, cave in ipairs(cavesFolder:GetChildren()) do
         local safeZoneFolder = cave:FindFirstChild("SafeZone") or cave:FindFirstChild("SafaZone")
         if safeZoneFolder then
+            -- Renomeia para SafeZone caso esteja com o typo 'SafaZone'
+            if safeZoneFolder.Name ~= "SafeZone" then
+                safeZoneFolder.Name = "SafeZone"
+            end
+
             local line = safeZoneFolder:FindFirstChild("Line") :: BasePart?
             if line and line:IsA("BasePart") then
+                -- Garante que a parte esteja perfeitamente configurada para colisão/toque
+                line.Anchored = true
+                line.CanTouch = true
+                line.CanQuery = true
+                line.CanCollide = false
+                
+                print(string.format("[WildEggService] SafeZone Line configurada em %s (Anchored=true, CanTouch=true, CanCollide=false)", cave.Name))
                 bindSafeZoneLine(line)
+            else
+                warn(string.format("[WildEggService] AVISO: Parte 'Line' não encontrada dentro de %s.SafeZone!", cave.Name))
             end
+        else
+            warn(string.format("[WildEggService] AVISO: Pasta 'SafeZone' não encontrada em %s!", cave.Name))
         end
     end
 end
